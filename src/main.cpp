@@ -2,7 +2,7 @@
 #include <SDL3/SDL.h>
 #include <SDL3/SDL_main.h>
 
-#include "physics/rigidBody/rigidBody.h"
+#include "physics/physics.h"
 #include "renderer/render.h"
 #include "clock/clock.h"
 
@@ -20,21 +20,30 @@ bool running  = true;
 Uint64 lastTime =  SDL_GetPerformanceCounter();
 
 Renderer r = Renderer(window, renderer, screenWidth, screenHeight);
-RigidBody b1 = RigidBody(960, 540, 10, 1, 10);
+Physics p = Physics();
 
 SDL_Event event;
 while(running){
   while (SDL_PollEvent(&event)){
-    if (event.type == SDL_EVENT_QUIT){ running = false;}
+    switch(event.type){
+      case SDL_EVENT_QUIT:
+        running = false;
+      case SDL_EVENT_MOUSE_BUTTON_DOWN:
+        p.newRigidBody(event.button.x, event.button.y, 10, 1);
+
+    }
   }
 
   SDL_SetRenderDrawColor(renderer, 20, 30, 60, 255);
   SDL_RenderClear(renderer);
   
   float dt = Clock::getDt(lastTime);
-
-  b1.integrate(dt);
-  r.drawRigidBody(b1);
+  
+  p.integrateRigidBodies(dt);
+  
+  for(RigidBody& b: p.rigidBodies()){
+    r.drawRigidBody(b);
+  }
 
   SDL_RenderPresent(renderer);
 

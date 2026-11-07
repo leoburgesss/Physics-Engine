@@ -9,4 +9,5 @@ void RigidBody::integrate(double dt){
 }
 
 std::pair<double, double> RigidBody::center(){return {px_, py_};}
+double RigidBody::vel(){return vel_;}
 int RigidBody::size(){return size_;}

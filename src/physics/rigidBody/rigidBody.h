@@ -9,6 +9,7 @@ public:
   void integrate(double dt);
   
   std::pair<double,double> center();
+  double vel();
   int size();
   double density();
 

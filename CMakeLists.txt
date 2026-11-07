@@ -8,6 +8,8 @@ find_package(SDL3 REQUIRED CONFIG REQUIRED COMPONENTS SDL3)
 
 add_executable(Physics
   src/main.cpp
+  src/physics/physics.h 
+  src/physics/physics.cpp
   src/physics/rigidBody/rigidBody.h 
   src/physics/rigidBody/rigidBody.cpp 
   src/renderer/render.h 
