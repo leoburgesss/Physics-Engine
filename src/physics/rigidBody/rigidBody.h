@@ -4,7 +4,9 @@
 
 class RigidBody{
 public:
-  RigidBody(double px, double py, int size, double density);
+  RigidBody(double px, double py, int size, double density, int ppm);
+
+  void integrate(double dt);
   
   std::pair<double,double> center();
   int size();
@@ -12,6 +14,7 @@ public:
 
 private:
   double px_, py_;
-  int size_;
+  double vel_, acc_;
+  int size_, ppm_;
   double density_;
 };

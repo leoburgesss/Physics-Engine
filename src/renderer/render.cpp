@@ -3,7 +3,7 @@
 
 Renderer::Renderer(SDL_Window* window, SDL_Renderer* renderer, int width, int height): window_(window), renderer_(renderer), width_(width), height_(height){}
 
-void Renderer::drawRigidBody(RigidBody r){
+void Renderer::drawRigidBody(RigidBody& r){
   int s = r.size();
   std::pair<double, double> c = r.center();
   SDL_FRect rect = {c.first-s, c.second-s, 2*s, 2*s};

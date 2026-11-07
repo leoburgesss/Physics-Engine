@@ -12,6 +12,8 @@ add_executable(Physics
   src/physics/rigidBody/rigidBody.cpp 
   src/renderer/render.h 
   src/renderer/render.cpp
+  src/clock/clock.h 
+  src/clock/clock.cpp
 )
 
 target_include_directories(Physics PRIVATE src)
