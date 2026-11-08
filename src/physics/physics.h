@@ -9,6 +9,7 @@ class Physics{
     std::vector<RigidBody> rigidBodies();
     void integrateRigidBodies(float dt);
     void newRigidBody(double x, double y, int size, double density);
+    bool hasCollided(RigidBody b1, RigidBody b2) const;
 
   private:
     std::vector<RigidBody> rigidBodies_;

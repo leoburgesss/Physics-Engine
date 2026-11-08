@@ -1,21 +1,20 @@
 #pragma once
-#include <utility>
+#include <glm/glm.hpp>
 
 
 class RigidBody{
 public:
-  RigidBody(double px, double py, int size, double density, int ppm);
+  RigidBody(float px, float py, int size, float density, int ppm);
 
-  void integrate(double dt);
+  void integrate(float dt);
   
-  std::pair<double,double> center();
-  double vel();
+  glm::vec2 center();
+  glm::vec2 vel();
   int size();
   double density();
 
 private:
-  double px_, py_;
-  double vel_, acc_;
-  int size_, ppm_;
-  double density_;
+  glm::vec2 pos_, vel_, acc_;
+  float size_, ppm_;
+  float density_;
 };
